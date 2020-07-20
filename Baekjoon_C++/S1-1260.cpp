@@ -1,26 +1,45 @@
 #include <iostream>
 #include <vector>
+#include <stack>
 #include <queue>
 #include <string.h>
 
 using namespace std;
 
-int n, m, v, a, b, now, togo;
-int** arr;
+int n, m, v, a, b;
+vector<vector<int>> arr;
 
-int visit[1005];
+int visit[1005] = { 0 };
 
-void DFS(int start) {
-	cout << start + 1 << " ";
-	visit[start] = 1;
-	for (int i = 0; i < n; i++) {
-		if (arr[start][i] && !visit[i]) DFS(i);
+void DFS()
+{
+	int now = v - 1;
+	stack<int> s;
+	s.push(now);
+	visit[now] = 1;
+	cout << now + 1 << " ";
+	while(!s.empty())
+	{
+		now = s.top();
+		s.pop();
+		for (int i = 0; i < arr[now].size(); i++)
+		{
+			if (!visit[arr[now][i]])
+			{
+				cout << arr[now][i] + 1 << " ";
+				visit[arr[now][i]] = 1;
+				s.push(now);
+				s.push(arr[now][i]);
+				break;
+			}
+		}
 	}
 }
 
-void BFS() {
+void BFS()
+{
 	queue<int> q;
-	now = v - 1;
+	int now = v - 1;
 	for (int i = 0; i < 1005; i++) visit[i] = 0;
 	q.push(now);
 	visit[now] = 1;
@@ -28,13 +47,12 @@ void BFS() {
 	while (!q.empty())
 	{
 		now = q.front();
-		for (int i = 0; i < n; i++) {
-			if (arr[now][i]) {
-				togo = i;
-				if (!visit[togo]) {
-					visit[togo] = 1;
-					q.push(togo);
-				}
+		for (int i = 0; i < arr[now].size(); i++)
+		{
+			if (!visit[arr[now][i]]) 
+			{
+				visit[arr[now][i]] = 1;
+				q.push(arr[now][i]);
 			}
 		}
 		cout << q.front() + 1 << " ";
@@ -46,20 +64,25 @@ int main() {
 
 	cin >> n >> m >> v;
 
-	arr = new int*[n]; 
-	for (int i = 0; i < n; ++i) {
-		arr[i] = new int[n];
-		memset(arr[i], 0, sizeof(int)*(n));
+	for (int i = 0; i < n; i++)
+	{
+		vector<int> tmp;
+		arr.push_back(tmp);
 	}
 
-	for (int i = 0; i < m; i++) {//ÀÎÁ¢Çà·Ä
+	for (int i = 0; i < m; i++)
+	{
 		cin >> a >> b;
-		arr[a - 1][b - 1] = 1;
-		arr[b - 1][a - 1] = 1;
+		arr[a - 1].push_back(b - 1);
+		arr[b - 1].push_back(a - 1);
 	}
 
-	now = v;
-	DFS(now - 1);
+	for (int i = 0; i < n; i++)
+	{
+		sort(arr[i].begin(), arr[i].end());
+	}
+
+	DFS();
 	cout << endl;
 	BFS();
 	cout << endl;
@@ -67,5 +90,5 @@ int main() {
 	return 0;
 }
 
-// dfs, bfsÀÇ ±âº». ¾ÕÀ¸·Îµµ ¿­½Ã¹Ì ÇÏÀÚ
+// dfs, bfsì˜ ê¸°ë³¸í˜•
 
