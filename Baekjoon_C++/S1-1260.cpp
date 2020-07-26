@@ -10,7 +10,7 @@ int n, m, v, a, b;
 vector<vector<int>> arr;
 
 int visit[1005] = { 0 };
-
+/*
 void DFS()
 {
 	int now = v - 1;
@@ -33,6 +33,17 @@ void DFS()
 				break;
 			}
 		}
+	}
+}
+*/
+void DFS(int s)
+{
+	cout << s+1;
+	visit[s] = 1;
+
+	for (int i = 0; i < arr[s].size(); i++)
+	{
+		if (!visit[arr[s][i]]) DFS(arr[s][i]);
 	}
 }
 
@@ -76,16 +87,16 @@ int main() {
 		arr[a - 1].push_back(b - 1);
 		arr[b - 1].push_back(a - 1);
 	}
-
+	
 	for (int i = 0; i < n; i++)
 	{
 		sort(arr[i].begin(), arr[i].end());
 	}
-
-	DFS();
+	
+	DFS(v-1);
 	cout << endl;
 	BFS();
-	cout << endl;
+	cout << endl; 
 
 	return 0;
 }
