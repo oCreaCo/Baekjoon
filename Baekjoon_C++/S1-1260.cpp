@@ -3,6 +3,7 @@
 #include <stack>
 #include <queue>
 #include <string.h>
+#include <algorithm>
 
 using namespace std;
 
@@ -35,7 +36,18 @@ void DFS()
 		}
 	}
 }
+/*
+void DFS(int s)
+{
+	cout << s+1;
+	visit[s] = 1;
 
+	for (int i = 0; i < arr[s].size(); i++)
+	{
+		if (!visit[arr[s][i]]) DFS(arr[s][i]);
+	}
+}
+*/
 void BFS()
 {
 	queue<int> q;
@@ -76,16 +88,16 @@ int main() {
 		arr[a - 1].push_back(b - 1);
 		arr[b - 1].push_back(a - 1);
 	}
-
+	
 	for (int i = 0; i < n; i++)
 	{
 		sort(arr[i].begin(), arr[i].end());
 	}
-
+	
 	DFS();
 	cout << endl;
 	BFS();
-	cout << endl;
+	cout << endl; 
 
 	return 0;
 }
