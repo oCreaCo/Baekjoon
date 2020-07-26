@@ -10,7 +10,7 @@ int n, m, v, a, b;
 vector<vector<int>> arr;
 
 int visit[1005] = { 0 };
-/*
+
 void DFS()
 {
 	int now = v - 1;
@@ -35,7 +35,7 @@ void DFS()
 		}
 	}
 }
-*/
+/*
 void DFS(int s)
 {
 	cout << s+1;
@@ -46,7 +46,7 @@ void DFS(int s)
 		if (!visit[arr[s][i]]) DFS(arr[s][i]);
 	}
 }
-
+*/
 void BFS()
 {
 	queue<int> q;
@@ -93,7 +93,7 @@ int main() {
 		sort(arr[i].begin(), arr[i].end());
 	}
 	
-	DFS(v-1);
+	DFS();
 	cout << endl;
 	BFS();
 	cout << endl; 
