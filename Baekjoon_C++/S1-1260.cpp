@@ -3,6 +3,7 @@
 #include <stack>
 #include <queue>
 #include <string.h>
+#include <algorithm>
 
 using namespace std;
 
