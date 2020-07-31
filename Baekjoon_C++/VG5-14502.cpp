@@ -16,7 +16,6 @@ int n, m;
 
 int BFS(vector<pair<int, int>> starts) 
 {
-    cout << starts.size() << endl;
     int x, y, nx, ny, cnt = 0;
     queue<pair<int, int>> q;
     for (int i = 0; i < starts.size(); i++)
@@ -68,9 +67,9 @@ int main(void)
         }
     }
 
-    cout << virus.size() << endl;
-
     cout << BFS(virus) << endl;
 
     return 0;
 }
+
+//BruteForce

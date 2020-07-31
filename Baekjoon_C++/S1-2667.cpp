@@ -10,13 +10,25 @@ int n, cnt = 0;
 int visit[25][25] = { 0 };
 int** Map;
 vector<int> cnts;
+int dx[4] = {0, 1, 0, -1};
+int dy[4] = {1, 0, -1, 0};
 
 void DFS(int a, int b) {
 	visit[a][b] = 1;
+	/*
 	if (a > 0 && Map[a - 1][b] == 1 && visit[a - 1][b] == 0) DFS(a - 1, b);
 	if (b < n - 1 && Map[a][b + 1] == 1 && visit[a][b + 1] == 0) DFS(a, b + 1);
 	if (a < n - 1 && Map[a + 1][b] == 1 && visit[a + 1][b] == 0) DFS(a + 1, b);
 	if (b > 0 && Map[a][b - 1] == 1 && visit[a][b - 1] == 0) DFS(a, b - 1);
+	*/
+	int nx, ny;
+	for (int i = 0; i < 4; i++)
+	{
+		nx = a + dx[i];
+		ny = b + dy[i];
+		if (nx < 0 || nx > n - 1 || ny < 0 || ny > n - 1) continue;
+		if (Map[nx][ny] == 1 && !visit[nx][ny]) DFS(nx, ny);
+	}
 	cnt++;
 }
 
@@ -56,4 +68,4 @@ int main() {
 	return 0;
 }
 
-//sort¸¦ ¾²·Á¸é #include <algorithm>ÇÏ±â...
+//sortï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ #include <algorithm>ï¿½Ï±ï¿½...
