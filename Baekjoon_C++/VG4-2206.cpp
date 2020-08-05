@@ -15,7 +15,7 @@ int dist[1000][1000][2] = { 0 };
 int dx[4] = {0, 1, 0, -1};
 int dy[4] = {1, 0, -1, 0};
 
-int BFS(int n, int m)
+int BFS(int n, int tmp)
 {
     dist[0][0][0] = 1;
     int x = 0, y = 0, z = 0;
@@ -34,10 +34,10 @@ int BFS(int n, int m)
 
         for (int i = 0; i < 4; i++)
         {
-            if (x == n - 1 && y == m - 1) return dist[x][y][z];
+            if (x == n - 1 && y == tmp - 1) return dist[x][y][z];
             nx = x + dx[i];
             ny = y + dy[i];
-            if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
+            if (nx < 0 || nx >= n || ny < 0 || ny >= tmp) continue;
             if (dist[nx][ny][z]) continue;
             if (map[nx][ny] == 0)
             {
@@ -56,17 +56,17 @@ int BFS(int n, int m)
 
 int main(void)
 {
-    int n, m;
-    cin >> n >> m;
+    int n, tmp;
+    cin >> n >> tmp;
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < m; j++)
+        for (int j = 0; j < tmp; j++)
         {
             scanf("%1d", &map[i][j]);
         }
     }
 
-    cout << BFS(n, m) << endl;
+    cout << BFS(n, tmp) << endl;
 
     return 0;
 }

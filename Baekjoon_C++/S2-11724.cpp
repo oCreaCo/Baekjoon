@@ -4,7 +4,7 @@
 using namespace std;
 
 
-int n, m;
+int n, tmp;
 vector<vector<int>> adjList;
 int visit[1000] = { 0 };
 
@@ -31,14 +31,14 @@ void BFS(int start)
 int main(void)
 {
     int cnt = 0;
-    cin >> n >> m;
+    cin >> n >> tmp;
     for (int i = 0; i < n; i++)
     {
         vector<int> tmp;
         adjList.push_back(tmp);
     }
     int a, b;
-    for (int i = 0; i < m; i++)
+    for (int i = 0; i < tmp; i++)
     {
         cin >> a >> b;
         adjList[a - 1].push_back(b - 1);

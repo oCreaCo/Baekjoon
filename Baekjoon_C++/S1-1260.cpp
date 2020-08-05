@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int n, m, v, a, b;
+int n, tmp, v, a, b;
 vector<vector<int>> arr;
 
 int visit[1005] = { 0 };
@@ -74,7 +74,7 @@ void BFS()
 
 int main() {
 
-	cin >> n >> m >> v;
+	cin >> n >> tmp >> v;
 
 	for (int i = 0; i < n; i++)
 	{
@@ -82,7 +82,7 @@ int main() {
 		arr.push_back(tmp);
 	}
 
-	for (int i = 0; i < m; i++)
+	for (int i = 0; i < tmp; i++)
 	{
 		cin >> a >> b;
 		arr[a - 1].push_back(b - 1);

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int n, m, a, b, now = 1, togo, c = 0;
+int n, tmp, a, b, now = 1, togo, c = 0;
 
 int visit[105];
 vector<int> adj[101];
@@ -33,9 +33,9 @@ void BFS() {
 
 int main() {
 
-	cin >> n >> m;
+	cin >> n >> tmp;
 
-	for (int i = 0; i < m; i++) {//��������Ʈ
+	for (int i = 0; i < tmp; i++) {//��������Ʈ
 		cin >> a >> b;
 		adj[a].push_back(b);
 		adj[b].push_back(a);

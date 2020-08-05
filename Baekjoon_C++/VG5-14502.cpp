@@ -12,7 +12,7 @@ vector<pair<int, int>> virus;
 int dx[4] = {0, 1, 0, -1};
 int dy[4] = {1, 0, -1, 0};
 
-int n, m;
+int n, tmp;
 
 int BFS(vector<pair<int, int>> starts) 
 {
@@ -33,7 +33,7 @@ int BFS(vector<pair<int, int>> starts)
         {
             nx = x + dx[i];
             ny = y + dy[i];
-            if (nx < 0 || nx > n - 1 || ny < 0 || ny > m - 1) continue;
+            if (nx < 0 || nx > n - 1 || ny < 0 || ny > tmp - 1) continue;
             if (!adjArr[nx][ny] && !infected[nx][ny])
             {
                 infected[nx][ny] = 1;
@@ -49,10 +49,10 @@ int BFS(vector<pair<int, int>> starts)
 int main(void)
 {
     int a;
-    cin >> n >> m;
+    cin >> n >> tmp;
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < m; j++)
+        for (int j = 0; j < tmp; j++)
         {
             cin >> a;
             adjArr[i][j] = a;
@@ -61,7 +61,7 @@ int main(void)
 
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < m; j++)
+        for (int j = 0; j < tmp; j++)
         {
             if (adjArr[i][j] == 2) virus.push_back(make_pair(i, j));
         }
