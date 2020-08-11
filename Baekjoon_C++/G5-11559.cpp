@@ -88,7 +88,7 @@ int main(void)
         for (int j = 0; j < 6; j++)
         {
             cin >> arr[i][j];
-            if (arr[i][j] == ',') visited[i][j] = 1;
+            if (arr[i][j] == '.') visited[i][j] = 1;
         }
     }
 

@@ -64,7 +64,7 @@ int main(void)
 
     memset(visited, 0, sizeof(arr));
 
-    while(cnt == 1)
+    while(true)
     {
         memset(visited, 0, sizeof(arr));
         cnt = 0;
