@@ -19,12 +19,12 @@ int BFS(int sx, int sy, char c)
     q.push(make_pair(sx, sy));
     v.push_back(make_pair(sx, sy));
     visited[sx][sy] = 1;
+        cnt++;
 
     while(!q.empty())
     {
         x = q.front().first;
         y = q.front().second;
-        cnt++;
 
         for (int i = 0; i < 4; i++)
         {
@@ -38,6 +38,7 @@ int BFS(int sx, int sy, char c)
                 q.push(make_pair(nx, ny));
                 v.push_back(make_pair(nx, ny));
                 visited[nx][ny] = 1;
+                cnt++;
             }
         }
 
@@ -55,27 +56,22 @@ int BFS(int sx, int sy, char c)
     else return 0;
 }
 
-void SetColumn(int col)
+void SetColumn()
 {
-    int i, j, sub;
-    for (i = 0; i < 12; i++)
+    for (int j = 0; j < 6; j++)
     {
-        if (arr[i][col] == '.') break;
-    }
-    
-    for (j = i + 1; j < 12; j++)
-    {
-        if (arr[j][col] != '.') break;
-    }
-    
-    if (j == 12) return;
-    
-    sub = j - i;
-    while(arr[j][col] != '.')
-    {
-        arr[j - sub][col] = arr[j][col];
-        arr[j][col] = '.';
-        j++;
+        for (int i = 1; i < 12; i++)
+        {
+            for (int k = 0; k < i; k++)
+            {
+                if (arr[k][j] == '.' && arr[i][j] != '.')
+                {
+                    arr[k][j] = arr[i][j];
+                    arr[i][j] = '.';
+                    break;
+                }
+            }
+        }
     }
 }
 
@@ -88,7 +84,6 @@ int main(void)
         for (int j = 0; j < 6; j++)
         {
             cin >> arr[i][j];
-            if (arr[i][j] == '.') visited[i][j] = 1;
         }
     }
 
@@ -106,11 +101,8 @@ int main(void)
 
         if (tmp == 0) break;
 
-        for (int j = 0; j < 6; j++)
-        {
-            SetColumn(j);
-        }
-
+        SetColumn();
+        
         cnt++;
     }
 
