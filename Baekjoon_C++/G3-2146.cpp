@@ -94,7 +94,6 @@ void GetMinLength(vector<pair<int, int>> v)
                 else
                 {
                     if (min_len > visited[x][y]) min_len = visited[x][y];
-                    cout << visited[x][y] << endl;
                     return;
                 }
                 
@@ -124,7 +123,7 @@ int main(void)
         }
     }
 
-    cout << min_len << endl;
+    cout << min_len - 1 << endl;
 
     return 0;
 }
