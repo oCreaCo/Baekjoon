@@ -11,16 +11,20 @@ int main(){
     cout << bitset<16>(data) << "   data" << endl;
     
     // 두번째 원소 제거하기 
-    data = data & ~(1<<1);                                // 집합의 원소를 제거 
-    cout << bitset<16>(data) << "   Delete(&~)" << endl;                    // 1111 1111 1111 1101
+    data = data & ~(1<<1);                                
+    // 집합의 원소를 제거 
+    cout << bitset<16>(data) << "   Delete(&~)" << endl;                    
+    // 1111 1111 1111 1101
     
     // 두번째 원소 추가하기 (이미 존재하면 그대로) 
     data = data | (1<<1);            
-    cout << bitset<16>(data) << "   Add(|)" << endl;                    // 1111 1111 1111 1111
+    cout << bitset<16>(data) << "   Add(|)" << endl;                    
+    // 1111 1111 1111 1111
     
     // 두번째 원소가 포함되어 있는지 검사
     data = data & (1<<1); 
-    cout << bitset<16>(data) << "   Check(&)" << endl;                    // 존재하면 > 0, 존재하지 않으면 < 0 
+    cout << bitset<16>(data) << "   Check(&)" << endl;                    
+    // 존재하면 > 0, 존재하지 않으면 < 0 
     
     // 두번째 원소를 바꾸기 1 -> 0, 0 -> 1
     data = data ^ (1<<1);
@@ -28,7 +32,8 @@ int main(){
     
     // 두번째 원소가 포함되어 있는지 검사
     data = data & (1<<1); 
-    cout << bitset<16>(data) << "   Check(&)" << endl;                    // 존재하면 > 0, 존재하지 않으면 < 0 
+    cout << bitset<16>(data) << "   Check(&)" << endl;                    
+    // 존재하면 > 0, 존재하지 않으면 < 0 
     
     return 0;
 }

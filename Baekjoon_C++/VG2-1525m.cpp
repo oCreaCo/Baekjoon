@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <cstring>
 
 using namespace std;
 
@@ -8,19 +9,21 @@ int visited[9] = { 0 };
 int zero;
 int dir[4] = {1, -1, 3, -3};
 
-void Swap(int first, int second)
+void Swap(int* tmpArr, int first, int second)
 {
-    int tmp = arr[second];
-    arr[second] = arr[first];
-    arr[first] = tmp;
+    int tmp = tmpArr[second];
+    tmpArr[second] = tmpArr[first];
+    tmpArr[first] = tmp;
 }
 
-int BFS()
+int BFS(int s)
 {
+    memset(visited, 0, sizeof(visited));
+    int* tmpArr = GetTmpArr();
     int n, nn;
     queue<int> q;
-    visited[zero] = 1;
-    q.push(zero);
+    visited[s] = 1;
+    q.push(s);
 
     while(!q.empty())
     {
@@ -34,10 +37,10 @@ int BFS()
 
             if (nn < 0 || nn >= 9) continue;
 
-            if (arr[nn] == n + 1)
+            if (tmpArr[nn] == n + 1)
             {
                 visited[nn] = visited[n] + 1;
-                Swap(n, nn);
+                Swap(tmpArr, n, nn);
                 q.push(nn);
             }
         }
@@ -48,20 +51,25 @@ int BFS()
     return 0;
 }
 
+int* GetTmpArr()
+{
+    int tmpArr[9];
+    for (int i = 0; i < 9; i++) tmpArr[i] = arr[i];
+    return tmpArr;
+}
+
 int main(void)
 {
     for (int i = 0; i < 9; i++)
     {
         int tmp;
-        cin >> tmp;
-        if (tmp == 0)
-        {
-            zero = i;
-        }
-        arr[i] = tmp;
+        cin >> arr[i];
     }
 
-    cout << BFS() - 1 << endl;
+    for (int i = 0; i < 9; i++)
+    {
+        BFS(i);
+    }
 
     return 0;
 }

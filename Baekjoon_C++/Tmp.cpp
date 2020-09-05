@@ -1,26 +1,34 @@
 #include <iostream>
-#include <stdio.h>
-#include <vector>
-#include <stack>
-#include <bitset>
+#include <queue>
 
 using namespace std;
 
-
-
 int main(void)
 {
-	unsigned int tmp = 0x00c3;
+    priority_queue<pair<int, int>> pq;
 
-	cout << tmp << endl;
-	cout << bitset<16>(tmp) << endl;
+	pq.push(make_pair(-50, 1));
+	cout << pq.top().first << ", " << pq.top().second << endl;
 
-	tmp += 256;
+	pq.push(make_pair(-40, 2));
+	cout << pq.top().first << ", " << pq.top().second << endl;
 
-	cout << tmp << endl;
-	cout << bitset<16>(tmp) << endl;
+	pq.push(make_pair(-20, 3));
+	cout << pq.top().first << ", " << pq.top().second << endl;
 
-	cout << int('F') << '	' << int ('f') << endl;
+	pq.push(make_pair(-30, 4));
+	cout << pq.top().first << ", " << pq.top().second << endl;
 
-	return 0;
+	pq.push(make_pair(-10, 5));
+	cout << pq.top().first << ", " << pq.top().second << endl;
+
+	cout << pq.size() << endl << endl;
+
+	while(!pq.empty())
+	{
+		cout << pq.top().first << ", " << pq.top().second << endl;
+		pq.pop();
+	}
+
+    return 0;
 }
